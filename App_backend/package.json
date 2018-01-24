@@ -1,0 +1,20 @@
+{
+  "name": "javascript_challege",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon Server.js"
+  },
+  "author": "cedric",
+  "license": "ISC",
+  "dependencies": {
+    "autoloader": "^2.1.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mysql": "^2.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.11"
+  }
+}

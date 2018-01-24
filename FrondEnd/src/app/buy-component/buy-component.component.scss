@@ -1,0 +1,25 @@
+$grey-dark:grey;
+.content{
+margin-top:200px;
+-webkit-box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.35);
+-moz-box-shadow: 0px 2px 25px 0px rgba(0,0,0,0.35);
+box-shadow: 0px 2px 25px 0px rgba(0,0,0,0.35);
+padding:70px;
+padding-left:20%;
+color:$grey-dark;
+}
+
+.error{
+    width:100%;
+    padding:20px;
+    background: rgba(243, 98, 98, 0.35);
+    color:white;
+    margin:10px;
+}
+.success{
+    width:100%;
+    padding:20px;
+    margin:10px;
+    background: rgba(130, 213, 26, 0.35);
+    color:white;
+}

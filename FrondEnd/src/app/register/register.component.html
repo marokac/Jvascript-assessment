@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="register">
+    <h2>Create account</h2>
+    <form [formGroup]="form">
+      <div class="form-group">
+        <label for="fname">first name:</label>
+        <input type="text" class="form-control col-md-8" id="name" placeholder="Enter first name" formControlName="fname">
+      </div>
+      <div class="form-group">
+        <label for="lname">Last name:</label>
+        <input type="text" class="form-control col-md-8" id="lname" placeholder="last name" formControlName="lname">
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control col-md-8" id="email" placeholder="Enter email" formControlName="email">
+      </div>
+      <div class="row">
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control col-md-12" id="pwd" placeholder="Enter password" formControlName="password">
+      </div>
+      <div class="form-group">
+          <label for="cpwd">Confirm password:</label>
+          <input type="password" class="form-control col-md-12" id="cpwd" placeholder="confirm password" formControlName="cpassword">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label for="cpwd">Bank Name:</label>
+          <input type="text" class="form-control col-md-12" id="bnk" placeholder="Bank name" formControlName="bank">
+        </div>
+        <div class="form-group">
+          <label for="card">Card Number:</label>
+          <input type="number" class="form-control col-md-12" id="crdnm" placeholder="card number" formControlName="cardNum">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label for="expDate">Expiry Date:</label>
+          <input type="text" class="form-control col-md-12" id="ed" placeholder="Expiry date" formControlName="exparyDate">
+        </div>
+        <div class="form-group">
+          <label for="cvc">CVC:</label>
+          <input type="number" class="form-control col-md-12" id="cvc" placeholder="CVC" formControlName="cvc">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-outline-success" style="margin-right:4px; width:150px;"(click)=register(form.value)>Register</button>
+      <button
+        type="submit" style="width:150px;" class="btn btn-outline-danger">Close</button>
+    </form>
+  </div>
+</div>
+

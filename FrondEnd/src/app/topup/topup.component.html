@@ -1,0 +1,30 @@
+<div class="container">
+<div class="content">
+  <h4>Top up your account</h4>
+  <div class="error"*ngIf="showError">
+    {{message}}
+  </div>
+  <div class="success"*ngIf="success">
+      {{message}}
+        </div>
+<form [formGroup]="form">
+    <div class="form-group">
+      <label for="fname">Amount:</label>
+      <input type="number" class="form-control col-md-4" id="amount" placeholder="Enter amount" formControlName="amount">
+    </div>
+ 
+      <div class="form-group">
+        <label for="cpwd">Bank Name:</label>
+        <input type="text" [readonly]="true"class="form-control col-md-5" id="bnk" placeholder="Bank name" formControlName="bank">
+      </div>
+      <div class="form-group">
+        <label for="card">Card Number:</label>
+        <input type="number" [readonly]="true"class="form-control col-md-5" id="crdnm" placeholder="card number" formControlName="cardNum">
+      </div>
+  
+    <button type="submit" class="btn btn-outline-success" style="margin-right:4px; width:150px;"(click)=toup(form.value)>To Up</button>
+    <button
+      type="submit" (click)="close()"style="width:150px;" class="btn btn-outline-danger">Close</button>
+  </form>
+</div>
+</div>
