@@ -12,6 +12,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { TopupComponent } from './topup/topup.component';
 import { BuyComponentComponent } from './buy-component/buy-component.component';
+import { TransectionsComponent } from './transections/transections.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BuyComponentComponent } from './buy-component/buy-component.component';
     LoginComponent,
     RegisterComponent,
     TopupComponent,
-    BuyComponentComponent
+    BuyComponentComponent,
+    TransectionsComponent
   ],
   imports: [
     BrowserModule,AppRoutingModule,RouterModule, FormsModule,

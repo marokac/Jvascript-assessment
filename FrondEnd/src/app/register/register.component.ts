@@ -11,17 +11,54 @@ import { Router } from "@angular/router";
 export class RegisterComponent implements OnInit {
 
   Message:any;
-  isError:any;
+  isError:boolean;
   form: FormGroup;
-  constructor(private appService:AppServiceService,private fb: FormBuilder,private router: Router) { }
+  errorMessage:any;
+   formStatus = {
+    formErrors: {
+	   'fname': '',
+       'lname': '',
+       'email': '',
+       'password': '',
+	   'cpassword': '',
+	   'bank': '',
+	   'cardNum': '',
+	   'exparyDate': '',
+	   'cvc': '',
+    },
+    submitClicked: false
+  };
+   validationMessages: object = {}
+   
+  constructor(private appService:AppServiceService,private fb: FormBuilder,private router: Router) {
+
+ this.validationMessages = {
+              'fname': { 'required':"First name is required"},
+              'lname': {'required': "Last Name is required"},
+              'email': { 'required': "Email is required"},
+			  'password':{ 'required': "password is required"},
+	          'cpassword': { 'required': "cpassword is required"},
+			  'bank':{ 'required': "bank is required"},
+			  'cardNum': { 'required': "cardNum is required"},
+			  'exparyDate': { 'required': "exparyDate is required"},
+	          'cvc': { 'required': "cvc is required"},
+              };
+			  
+		// this.form.valueChanges.subscribe(data => this.onValueChanged(data))
+    //     this.onValueChanged()  
+
+  }
 
   ngOnInit() {
+ 
     this.isError=false;
     this.buildForm();
   }
 
 register(form){
-if(form.password==form.cpassword){
+this.markAllAsDirty();
+ if(this.form.valid){
+
  let body={
   "first_name":form.fname,
   "last_name":form.lname,
@@ -30,11 +67,11 @@ if(form.password==form.cpassword){
  } 
  
 console.log(body)
-
+if(form.password==form.cpassword){
 this.appService.register(body).subscribe(result => {
  if(result.Error){
-  this.Message=result.Message;
   this.isError=true;
+  this.errorMessage=result.Message;
  }
  else{
 console.log(result.user.id+"fjyguhiop[]")
@@ -55,22 +92,62 @@ console.log(result.user.id+"fjyguhiop[]")
  }
 });
 }
-  else{
-    this.Message="password do not match";
-  }
+else{
+  this.isError=true;
+  this.errorMessage="password dont match";
+}
+}
+else{
+  this.isError=true;
+}
 }
 
 buildForm(){
   this.form = this.fb.group({
-    fname: [''],
-    lname: ['',Validators.email],
-    email: [''],
-    password:[''],
-    cpassword:[''],
-    bank:[''],
-    cardNum:[''],
-    exparyDate:[''],
-    cvc:['']
+    fname: ['',[Validators.required]],
+    lname: ['',[Validators.required]],
+    email: ['',[Validators.required]],
+    password:['',[Validators.required]],
+    cpassword:['',[Validators.required]],
+    bank:['',[Validators.required]],
+    cardNum:['',[Validators.required]],
+    exparyDate:['',[Validators.required]],
+    cvc:['',[Validators.required]]
   });
+  this.form.valueChanges.subscribe(data => this.onValueChanged(data))
+  this.onValueChanged() // (re)set validation messages now
 }
+
+  onValueChanged(data?: any) {
+    if (!this.form) { return; }
+    const form = this.form
+
+    // tslint:disable-next-line:forin
+    for (const field in this.formStatus.formErrors) {
+      // clear previous error message (if any)
+      this.formStatus.formErrors[field] = ''
+      const control = form.get(field)
+
+      if (control && control.dirty && !control.valid) {
+        const messages = this.validationMessages[field]
+        // tslint:disable-next-line:forin
+        for (const key in control.errors) {
+          this.formStatus.formErrors[field] += messages[key] + ' '
+          this.errorMessage= this.formStatus.formErrors[field];
+        }
+      }
+    }
+  }
+
+ markAllAsDirty() {
+    // Mark all fields as dirty to trigger validation
+    for (const key in this.form.controls) {
+      if (key) { this.form.controls[key].markAsDirty() }
+    }
+    this.onValueChanged();
+  }
+
+  close(){
+    setTimeout(this.router.navigate(['dashboard']),5000)
+  }
 }

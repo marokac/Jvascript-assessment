@@ -5,6 +5,7 @@ import { LoginComponent } from "./login/login.component";
 import { RegisterComponent } from "./register/register.component";
 import { TopupComponent } from "./topup/topup.component";
 import { BuyComponentComponent } from "./buy-component/buy-component.component";
+import { TransectionsComponent } from "./transections/transections.component";
 
 const routers: Routes = [
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -21,7 +22,9 @@ const routers: Routes = [
       },
       { path:'buy/:id',
         component:BuyComponentComponent,
-      }
+      },
+      {path:"transections",
+      component:TransectionsComponent}
       
 ]
 @NgModule({

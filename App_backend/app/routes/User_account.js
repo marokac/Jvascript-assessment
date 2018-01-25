@@ -50,4 +50,17 @@ module.exports=function(app,db){
             })
       });
 
+     //get User account by user id
+	   app.get('/api/getAccById/:id',(req,res)=>{
+        db.query('SELECT * FROM `account` where `user_id`=?',[req.params.id],(err,result)=>{
+            if(err) {
+                res.json({"Error" : true, "Message" : "Error executing MySQL query"+err});
+            } else {
+                res.json({"Error" : false, "acount" : result[0]});
+               
+            }
+
+        })
+    })
+
     };

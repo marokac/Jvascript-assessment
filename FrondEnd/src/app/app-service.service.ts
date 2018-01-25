@@ -89,4 +89,11 @@ makeTransection(body){
 })
 
 }
+getAccByUserId(id){
+  return this.http.get("/api/getAccById/"+id).map((result: Response) => {
+    console.log(result)
+    const response = result.json();
+    return response;
+  }
+  )}
 }

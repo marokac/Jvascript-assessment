@@ -76,6 +76,13 @@ export class BuyComponentComponent implements OnInit {
 
     }
     else{
+	   var newbalance=this.userAccount.balance-this.totalPrice;
+	   let body1={
+	   "balance":newbalance
+	   }
+	   this.appService.uptadeBalance(this.userAccount.a_id,body1).subscribe(result=>{
+	   console.log("balance uptaded");
+	   });
       this.message=result.Message;
       this.success=true;
     }

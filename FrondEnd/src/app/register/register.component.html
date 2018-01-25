@@ -1,6 +1,10 @@
 <div class="container">
   <div class="register">
     <h2>Create account</h2>
+    <div class="error" *ngIf="isError">
+      {{errorMessage}}
+    </div>
+
     <form [formGroup]="form">
       <div class="form-group">
         <label for="fname">first name:</label>
@@ -46,7 +50,7 @@
       </div>
       <button type="submit" class="btn btn-outline-success" style="margin-right:4px; width:150px;"(click)=register(form.value)>Register</button>
       <button
-        type="submit" style="width:150px;" class="btn btn-outline-danger">Close</button>
+        type="submit" style="width:150px;" class="btn btn-outline-danger" (click)="close()">Close</button>
     </form>
   </div>
 </div>
