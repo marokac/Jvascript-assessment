@@ -16,4 +16,41 @@ module.exports=function(app,db){
                  }
              });
          });
+
+
+         app.get('/api/getTrans/:id',(req,res)=>{
+            db.query('SELECT * FROM `transections` WHERE a_id = ?',[req.params.id],(err,row)=>{
+                if(err){
+                    res.send({
+                        "Error":true,
+                        "code":400,
+                        "failed":"error ocurred"
+                      })
+                }
+                else {
+                    if(row.length>0){
+                        db.query('SELECT * FROM products WHERE p_id=?',[row[0].p_id],(err,result)=>{
+                            if(err){
+                              res.send({
+                                  "Error":true,
+                                  "code":400,
+                                  "failed":"error ocurred"
+                                }) 
+                            }
+                            else{
+                              res.send(
+                                  {  "Error":false,
+                                      "code":200,
+                                      "trans":row,
+                                      "product":result
+                                  }
+                              ) ;
+                            }
+                      })  
+                  } 
+                    }
+                    
+               
+            })
+        });
 };

@@ -41,6 +41,7 @@ ngOnInit(){
   setTimeout(this.router.navigate(['transections']),5000); 
  }
  public closeTopup(){
+  this.appService.setaccountData(this.account)
   this.getRoute=true;
  }
  logout(){

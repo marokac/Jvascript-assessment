@@ -96,4 +96,13 @@ getAccByUserId(id){
     return response;
   }
   )}
+
+  getTransectionsL(id){
+    return this.http.get("/api/getTrans/"+id).map((result: Response) => {
+      console.log(result)
+      const response = result.json();
+      return response;
+    }
+    )
+  }
 }
