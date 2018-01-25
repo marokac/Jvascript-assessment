@@ -19,11 +19,12 @@
     <div class="product">
       <div class="row">
         <div class="col-md-4">
-          {{d.name}}
+            <img [src]="'data:image/jpg;base64,'+d.picture" width="20" height="20" />
           <h4>R{{d.price}}</h4>
         </div>
         <div class="col-md-4">
-          <p>
+            <h5>{{d.name}}</h5>
+          <p> 
             {{d.description}}
           </p>
         </div>

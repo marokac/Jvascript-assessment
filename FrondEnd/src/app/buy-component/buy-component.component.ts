@@ -15,7 +15,6 @@ export class BuyComponentComponent implements OnInit {
   discount:any
   totalPrice:any;
   userAccount:any;
-
   isError:boolean;
   success:boolean;
   message:any
@@ -40,23 +39,20 @@ export class BuyComponentComponent implements OnInit {
   }
 
   calculateDiscount(price){
-    switch(price){
-      case price<=100:{
-       this.discount=0;
-      }
-      break
-      case price>=112&&price<=115:{
-        this.discount=price*25/100;
-      }
-      break
-      case price>120:{
-        this.discount=price*25/100;
-      }
-      default:{
-        this.discount=0;
-      console.log("no discount")
-      }
+
+    if(price<=100){
+      this.discount=0;
     }
+    if(price>=112&&price<=115){
+      this.discount=price*25/100;
+     }
+    if(price<=100){
+            
+      }
+       if(price>120){
+       this.discount=price*25/100;
+     }
+  
   }
   makeTrans(){
     let body={
@@ -81,15 +77,16 @@ export class BuyComponentComponent implements OnInit {
 	   "balance":newbalance
 	   }
 	   this.appService.uptadeBalance(this.userAccount.a_id,body1).subscribe(result=>{
-	   console.log("balance uptaded");
+     console.log("balance uptaded");
+     console.log('balance', result)
 	   });
       this.message=result.Message;
+      
       this.success=true;
     }
     })
   }
   }
-
   close(){
     setTimeout(this.router.navigate(['dashboard']),5000)
   }

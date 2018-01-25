@@ -10,24 +10,19 @@
       <table class="table table-inverse">
           <thead>
             <tr>
+              <th>Product ID</th>
               <th>Transection Date</th>
-              <th>Product Name</th>
               <th>Price</th>
-              <th>Discount</th>
-              <th>Total</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            <tr *ngFor="let d of data">
+              <td>{{d.p_id}}</td>
+              <td>{{d.trans_date| date: 'dd/MM/yyyy'}}</td>
+              <td>{{d.total_price}}</td>
             </tr>
           </tbody>
         </table>
             <button type="button" (click)="close()" class="btn btn-danger" style="float:right;margin:1px">Close</button>
     </div>
     </div>
-

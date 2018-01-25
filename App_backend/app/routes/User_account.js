@@ -45,7 +45,7 @@ module.exports=function(app,db){
               if(err) {
                   res.json({"Error" : true, "Message" : "Error executing MySQL query"+err});
               } else {
-                  res.json({"Error" : false, "Message" : "Balance Updated !"});
+                  res.json({"Error" : false, "Message" : "Balance Updated !","data":row});
               }
             })
       });

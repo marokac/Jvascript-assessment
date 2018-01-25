@@ -46,5 +46,7 @@ ngOnInit(){
  }
  logout(){
  this.loggedin=false;
+ setTimeout(this.router.navigate(['dashboard']),5000);
+
  }
 }

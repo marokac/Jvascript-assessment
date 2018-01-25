@@ -31,7 +31,7 @@ buy:boolean;
        discount_price:value.discound_price,
        picture:value.picture})
     });
-console.log(this.data)
+    console.log(JSON.stringify(this.data)+"i am data")
   }
 
   buyProd(id){
